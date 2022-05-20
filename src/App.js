@@ -9,12 +9,16 @@ import Home from './pages/home/Home'
 import Recipe from './pages/recipe/Recipe'
 import Create from './pages/create/Create'
 import Search from './pages/search/Search'
+import ThemeSelector from './components/ThemeSelector'
+import { useTheme } from './hooks/useTheme'
 
 function App() {
+  const { mode } = useTheme()
   return (
-    <div className="App">
+    <div className={`App ${mode}`}>
       <Router>
         <Navbar />
+        <ThemeSelector />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recipe/:id" element={<Recipe />} />

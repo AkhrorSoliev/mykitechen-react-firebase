@@ -2,6 +2,7 @@
   background: #58249c;
   padding: 20px;
   color: #fff;
+  transition: 0.5s;
 }
 .navbar nav {
   display: flex;
