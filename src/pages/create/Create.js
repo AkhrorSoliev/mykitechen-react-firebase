@@ -1,8 +1,9 @@
 // style
 import './Create.css'
-import { useState, useEffect } from 'react'
-import { useFetch } from '../../hooks/useFetch'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { projectFirstore } from '../../firebase/config'
+
 function Create() {
   const [title, setTitle] = useState('')
   const [method, setMethod] = useState('')
@@ -11,26 +12,22 @@ function Create() {
   const [ingredients, setIngredinets] = useState([])
   const navigate = useNavigate()
 
-  // useFetch
-  const { data, postData } = useFetch('http://localhost:3000/recipes', 'POST')
-
   // handleSubmit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    postData({
+    const doc = {
       title,
       method,
       cookingTime: cookingTime + ' minutes',
       ingredients,
-    })
-  }
-
-  useEffect(() => {
-    if (data) {
-      navigate('/')
-      console.log(1)
     }
-  }, [data, navigate])
+    try {
+      await projectFirstore.collection('recipes').add(doc)
+      navigate('/')
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   const addIngredients = (e) => {
     e.preventDefault()
