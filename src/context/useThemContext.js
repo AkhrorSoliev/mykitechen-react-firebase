@@ -16,7 +16,7 @@ const changeColor = (state, action) => {
 export function ThemeProvider({ children }) {
   const [state, dispatch] = useReducer(changeColor, {
     color: 'black',
-    mode: 'dark',
+    mode: 'ligth',
   })
 
   const changeNavColor = (color) => {
