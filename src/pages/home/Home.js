@@ -22,8 +22,8 @@ function Home() {
           setError('Could not fetch this recipes')
           setIsPending(false)
         } else {
+          let recipes = []
           data.forEach((doc) => {
-            let recipes = []
             recipes.push({ ...doc.data(), id: doc.id })
             setData(recipes)
             setIsPending(false)
