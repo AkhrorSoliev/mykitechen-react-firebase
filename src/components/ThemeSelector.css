@@ -13,3 +13,15 @@
   margin-left: 15px;
   border-radius: 50%;
 }
+
+.mode-toggle {
+  display: inline-block;
+  margin-right: auto;
+}
+
+.mode-toggle img {
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  /* filter: invert(100%); */
+}

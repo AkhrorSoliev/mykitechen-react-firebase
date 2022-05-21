@@ -3,7 +3,7 @@ import './ThemeSelector.css'
 import { useTheme } from '../hooks/useTheme'
 import ModeIcon from '../assets/mode_icon.svg'
 
-const navThemeColors = ['#2A2550', '#FF4949', '#F8B400']
+const navThemeColors = ['#A91079', '#646FD4', '#F8B400']
 
 function ThemeSelector() {
   const { changeNavColor, changeMode, mode } = useTheme()
@@ -16,7 +16,16 @@ function ThemeSelector() {
   return (
     <div className="theme-selector">
       <div className="mode-toggle">
-        <img onClick={toggleMode} src={ModeIcon} alt="Mode Icon" />
+        <img
+          onClick={toggleMode}
+          src={ModeIcon}
+          alt="Mode Icon"
+          style={
+            mode === 'dark'
+              ? { filter: 'invert(100%)' }
+              : { filter: 'invert(0)' }
+          }
+        />
       </div>
       <div className="theme-buttons">
         {navThemeColors.map((color) => (
